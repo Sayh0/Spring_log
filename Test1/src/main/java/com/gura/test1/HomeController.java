@@ -36,7 +36,12 @@ public class HomeController {
 		
 		return "home";
 	}
-	
+	   // "/test" 경로의 요청이 왔을 때 이 메소드를 이용해서 응답을 하겠다는 의미.
+	   @RequestMapping("/test")
+	   public String study() {
+		   // /WEB-INF/views/test.jsp 페이지로 forward 이동해서 응답하겠다는 의미.
+		   return "test";
+	   }
 	
 	
 }
