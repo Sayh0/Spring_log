@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
+<aop-project name="Hello"/>
+<aop-project name="Step02_RequestParam"/>
 <aop-project name="Test1"/>
+<aop-project name="Step01_Basic"/>
 </aop-reference-model>
