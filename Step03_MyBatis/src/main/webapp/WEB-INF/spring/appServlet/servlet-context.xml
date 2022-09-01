@@ -94,6 +94,14 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!--
+		com.gura.step03 패키지와 그 하위에 있는 모든 패키지를 scan 해서
+		스프링 bean 컨테이너에 관리할 객체를 생성해서 관리한다.
+		- 스캔 도중 @Controller, @Service, @Repository, @Component 등의
+			어노테이션이 붙어 있는 클래스가 있다면 해당 클래스로 객체를 생성해서
+			스프링 bean 컨테이너에서 관리를 한다.
+		무작정 @ 딱지 붙여놓는다고 bean이 되는 것이 아니고, scan 이 선행되어야 한다.
+	 -->
 	<context:component-scan base-package="com.gura.step03" />
 	
 	

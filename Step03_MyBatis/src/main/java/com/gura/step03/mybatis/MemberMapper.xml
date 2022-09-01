@@ -32,4 +32,4 @@
       	FROM member
       	ORDER BY num ASC
    	</select>   	
-   </mapper>
+</mapper>

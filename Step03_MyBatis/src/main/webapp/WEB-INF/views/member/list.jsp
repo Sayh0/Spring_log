@@ -30,7 +30,8 @@
 					<td>${tmp.name }</td>
 					<td>${tmp.addr }</td>
 					<td>
-						<a href="${pageContext.request.contextPath }/member/updateform.do?num=${tmp.num}">수정</a>
+						<a href="${pageContext.request.contextPath }/member/updateform.
+						do?num=${tmp.num}">수정</a>
 					</td>
 					<td>
 						<a href="${pageContext.request.contextPath }/member/delete.do?num=${tmp.num }">삭제</a>

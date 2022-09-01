@@ -16,6 +16,11 @@
 	<li>화이팅!</li>
 	<li><a href="${pageContext.request.contextPath }/member/list.do">회원 목록보기</a></li>
 	<li><a href="${pageContext.request.contextPath }/todo/list.do">할일 목록 보기</a></li>
+	<li><a href="send.do">json 테스트</a></li>
+	<li><a href="send2.do">json 테스트2</a></li>
+	<li><a href="send3.do">json 테스트3</a></li>
+	<li><a href="send4.do">json 테스트4</a></li>
+	
 </ul>
 
 </body>

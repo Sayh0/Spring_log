@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gura.step03.member.dao.MemberDao;
 import com.gura.step03.member.dto.MemberDto;
 
-@Controller
-public class MemberController {
+// @Controller 잠깐 MemberController2 기능 시험하려고 꺼둠
+public class MemberController_old {
    
    // spring bean container 로 부터 MemberDao 인터페이스 type 의 참조값을 DI 받는다. 
    @Autowired

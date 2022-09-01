@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="todo">
+	<select id="getList" resultType="com.gura.step03.todo.dto.TodoDto">
+		SELECT num, content, regdate
+		FROM todo
+		ORDER BY num ASC
+	</select>
+	
+	<select id="getData" parameterType="int"
+			resultType="com.gura.step03.todo.dto.TodoDto">
+		SELECT num, content, regdate
+		FROM todo
+		WHERE num=#{num}		
+	</select>
+	
+	<insert id="insert" parameterType="com.gura.step03.todo.dto.TodoDto">
+		INSERT INTO todo
+		(num, content, regdate)
+		VALUES(member_seq.NEXTVAL, #{content}, SYSDATE)
+	</insert>
+	
+	<update id="update" parameterType="com.gura.step03.todo.dto.TodoDto">
+		UPDATE todo
+		SET content=#{content}, regdate=SYSDATE
+		WHERE num=#{num}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM todo
+		WHERE num=#{num}
+	</delete>
+</mapper>
