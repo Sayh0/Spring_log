@@ -3,4 +3,5 @@
 <aop-project name="Hello"/>
 <aop-project name="Step02_RequestParam"/>
 <aop-project name="Step01_Basic"/>
+<aop-project name="Step03_MyBatis"/>
 </aop-reference-model>

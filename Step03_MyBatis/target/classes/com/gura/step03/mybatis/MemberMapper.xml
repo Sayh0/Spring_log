@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
-	<insert id="insert" parameterType="com.gura.step03.member.dto.MemberDto">
+	<insert id="insert" parameterType="memberDto"> <!-- typeAlias 적용한 모습 -->
 		INSERT INTO member
 		(num, name, addr)
 		VALUES(member_seq.NEXTVAL, #{name}, #{addr}) <!-- ; <<로 끝내지 않도록 주의 -->
 		<!-- insert 된 아이디에서 정보를 받아와 샥 샥 -->
 	</insert>
 	
-	<update id="update" parameterType="com.gura.step03.member.dto.MemberDto">
+	<update id="update" parameterType="memberDto"> <!-- typeAlias 적용한 모습 -->
 		UPDATE MEMBER
 		SET name=#{name}, addr=#{addr}
 		WHERE num=#{num} 
