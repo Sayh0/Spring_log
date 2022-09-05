@@ -63,6 +63,7 @@ public class AuthAspect {
 	            HttpServletRequest request=(HttpServletRequest)tmp;
 	            //HttpSession 객체의 참조값 얻어와서 로그인 여부를 알아낸다.
 	            String id=(String)request.getSession().getAttribute("id");
+	            /*여기서 부터 핵심 */
 	            if(id == null) {//만일 로그인을 하지 않았으면
 	               //원래 가려던 URL 정보 읽어오기
 	               String url=request.getRequestURI();
@@ -88,10 +89,11 @@ public class AuthAspect {
 
 	      //로그인을 했으면 아래의 코드가 수행되고 ModelAndView 객체가 Object type 으로 리턴된다. 
 	      Object obj=joinPoint.proceed(); //aspect 가 적용된 메소드를 정상수행하기
+	      //joinPoint.proceed() 는 원래 수행하려 했던 메소드를 수행.
 
 	      return obj;
 	   }
-	   @Around("execution(java.util.Map auth*(..))")
+	   @Around("execution(java.util.Map auth*(..))") //json 응답하는 메소드가 로그인여부를 체크할 때.
 	   public Object loginCheckAjax(ProceedingJoinPoint joinPoint) throws Throwable {
 	      Object[] args=joinPoint.getArgs();
 	      //메소드에 전달된 인자중에서 HttpServletRequest 객체를 찾는다.
@@ -102,7 +104,7 @@ public class AuthAspect {
 	            //HttpSession 객체의 참조값 얻어와서 로그인 여부를 알아낸다.
 	            String id=(String)request.getSession().getAttribute("id");
 	            if(id == null) {//만일 로그인을 하지 않았으면
-	               //예외를 발생 시켜서 정상적인 응답을 받을수 없도록 한다.
+	               //예외를 발생 시켜서 정상적인 응답을 받을수 없도록 한다. 일부러 500번 버스를 태운다.
 	               throw new RuntimeException("로그인이 필요 합니다.");
 	            }
 	         }

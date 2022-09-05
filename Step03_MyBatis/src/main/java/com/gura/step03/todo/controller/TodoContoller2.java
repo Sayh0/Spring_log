@@ -44,7 +44,6 @@ public class TodoContoller2 {
 	}	
 	//READ-------------------------------------------
 
-	
 	//UPDATE-------------------------------------------
 	@RequestMapping("/todo/updateform")
 	public ModelAndView updateform(int num, ModelAndView mView) {

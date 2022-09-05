@@ -19,14 +19,14 @@
       	WHERE num=#{num}
    	</delete>
    	<!-- resultType="select 된 row 하나를 담을 데이터 type" -->
-   	<select id="getData" parameterType="int"
-   							resultType="com.gura.step03.member.dto.MemberDto">
+   	<!-- com.gura.step03.member.dto.MemberDto는 memberDto 로 치환해둠(typeAlias)-->
+   	<select id="getData" parameterType="int" resultType="memberDto">
 		SELECT num, name, addr
 		FROM member
 		WHERE num=#{num}   		
    	</select>
 	
-	<select id="getList" resultType="com.gura.step03.member.dto.MemberDto">
+	<select id="getList" resultType="memberDto">
 	<!-- 당연히 자동으로 되는 조건은 Dto 필드랑 칼럼명이 같야야 되게찌  -->
       	SELECT num, name, addr
       	FROM member

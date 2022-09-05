@@ -16,6 +16,7 @@ public class PlayController {
 	
  /* aspect 로  바꾸기 */
 	
+	//로그인된 클라이언트의 요청만 정상수행하는 메소드
 	@RequestMapping("/play")
 	public ModelAndView authPlay(ModelAndView mView, HttpServletRequest request) {
       

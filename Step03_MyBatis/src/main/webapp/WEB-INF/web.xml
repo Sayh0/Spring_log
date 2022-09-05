@@ -19,6 +19,16 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+	<!-- 
+		servlet 이름(여기서는 appServlet)은 맘대로 설정 가능.
+		다만 밑에 있는 <servlet> 과 <servlet-mapping>은 동일해야 함 
+		
+		DispatcherServlet 의 동작을 설정하고 싶으면 servlet-context.xml 문서를 수정하면 된다.
+		DispatcherServlet 은 서버가 시작되는 시점에 servlet-context.xml 문서를 로딩해서 동작을 준비한다.
+		servlet-context.xml 문서에는 스프링이 어떤 객체를 생성해서 bean 컨테이너르 관리를 할지에 대한 설정이 들어있다.
+		
+	 -->
+
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>

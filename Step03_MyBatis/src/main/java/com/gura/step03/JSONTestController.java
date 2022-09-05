@@ -27,7 +27,9 @@ import com.gura.step03.member.dto.MemberDto;
 public class JSONTestController {
 	
 	@RequestMapping("/send")
-	@ResponseBody
+	@ResponseBody //리턴하는 Map을 클라이언트에게 바로 응답해줘라 라는 뜻. > Map 은 {K:V, K:V...} 형식으로 바뀌어서 사용자에게 응답된다.
+	// Dto는 Dto의 field name이 나열되겠지.
+	// 이 변환되는 과정은 jackson-databind 라이브러리가 알아서 해 준다.
 	public Map<String, Object> send() {
 		
 		Map<String, Object> map=new HashMap<>();

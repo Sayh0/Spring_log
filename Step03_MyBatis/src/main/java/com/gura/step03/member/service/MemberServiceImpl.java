@@ -41,6 +41,8 @@ public class MemberServiceImpl implements MemberService{
    public void getListMember(ModelAndView mView) {
       List<MemberDto> list=dao.getList();
       mView.addObject("list", list);
+      //request.setAttribute("list", list) 와 동일한 코드.
+
    }
 
 }

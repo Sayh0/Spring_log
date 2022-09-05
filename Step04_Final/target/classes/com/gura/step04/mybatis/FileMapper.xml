@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="file">
+	<select id="getList" parameterType="fileDto" resultType="fileDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM AS rnum
+			FROM
+			<!-- paging 처리 때문에 서브쿼리가 나오게 됨. -->
+				(SELECT num,writer,title,orgFileName,saveFileName,
+					fileSize,regdate
+				FROM board_file
+				<!-- 검색 키워드 때문에 추가된 부분 --> 
+				<!-- Dynamic Query 동적쿼리. 검색 조건에 따라 달라짐 -->
+				<!-- 문법은 jsp 랑 비슷함.(c:choose 그거) -->
+				<choose>
+					<when test="title != null and orgFileName != null">
+						WHERE title LIKE '%${title}%' 
+						OR orgFileName LIKE '%'||#{orgFileName}||'%'
+					</when>
+					<when test="title != null">
+						WHERE title LIKE '%'||#{title}||'%'
+					</when>
+					<when test="writer != null">
+						WHERE writer LIKE '%${writer}%'
+					</when>
+				</choose>
+				<!-- 조건이 다 false 면 암것도 안 들어가고 그냥 페이징 처리. -->
+				<!-- Dynamic Query 동적쿼리. 검색 조건에 따라 달라짐 -->
+				ORDER BY num DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND ${endRowNum}
+	</select>
+	
+	<select id="getCount" parameterType="fileDto" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM board_file
+		<choose>
+			<when test="title != null and orgFileName != null">
+				WHERE title LIKE '%${title}%' 
+				OR orgFileName LIKE '%'||#{orgFileName}||'%'
+			</when>
+			<when test="title != null">
+				WHERE title LIKE '%'||#{title}||'%'
+			</when>
+			<when test="writer != null">
+				WHERE writer LIKE '%${writer}%'
+			</when>
+		</choose>		
+	</select>
+
+	<insert id="insert" parameterType="fileDto">
+		INSERT INTO board_file
+		(num, writer, title, orgFileName, saveFileName, fileSize, regdate)
+		VALUES(board_file_seq.NEXTVAL, #{writer}, #{title}, 
+			#{orgFileName}, #{saveFileName}, #{fileSize}, SYSDATE)
+	</insert>
+	
+	<select id="getData" parameterType="int" resultType="fileDto">
+		SELECT num,writer,title,orgFileName,saveFileName,fileSize,regdate
+		FROM board_file
+		WHERE num=#{num}
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM board_file
+		WHERE num=#{num}
+	</delete>	
+</mapper>
+
+
+
+
+
+

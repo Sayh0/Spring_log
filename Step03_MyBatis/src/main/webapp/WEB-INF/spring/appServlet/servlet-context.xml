@@ -24,6 +24,11 @@
       서버 폴더 Servers/context.xml에 위 코드를 붙여넣는다.
    -->
    
+   <!-- 
+   		객체에 필요한 값을 전달할 때 숫자나 문자열은 value 속성을으로 전달하고
+   		또다른 객체(bean)의 참조값을 전달할 때는  ref 속성을 이용해서 전달해야 한다.
+    -->
+   
    <beans:bean id="dataSource" 
       class="org.springframework.jndi.JndiObjectFactoryBean">
       <beans:property name="jndiName" value="java:comp/env/jdbc/myoracle"/>
@@ -42,9 +47,9 @@
    -->
    <beans:bean id="sessionFactory" 
       class="org.mybatis.spring.SqlSessionFactoryBean">
-      <beans:property name="dataSource" ref="dataSource"/>
+      <beans:property name="dataSource" ref="dataSource"/> <!-- dataSource는 id니까 참조값 >> ref 이용해 전달 -->
       <beans:property name="configLocation"
-   value="classpath:com/gura/step03/mybatis/Configuration.xml"/>
+   value="classpath:com/gura/step03/mybatis/Configuration.xml"/> <!-- classpath:~ 는 문자열이니까 >> value 이용해 전달 -->
    </beans:bean>
    <!-- 
       sessionFactory=new SqlSessionFactoryBean();
