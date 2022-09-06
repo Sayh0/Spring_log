@@ -28,6 +28,15 @@
 		<![CDATA[ 
 		WHERE rnum >= #{startRowNum} AND rnum <= #{endRowNum}
 		]]>
+		
+		
+		<!--
+			xml 문서는 <> 이 기호에 매우 민감. 근데 비교연산자도 >=< 잖아? xml 문서에 오류를 발생시다. 
+			WHERE rnum >=#{startRowNum} AND rnum <= # {endRowNum} 도 그냥 쓰면 오류 나지.
+			SQL에서 원래는 BETWEEN AND 를 썼던 거 기억해? 그래서 그런 거야.
+			근데 <![CDATA[....]]> 를 써주면 여기서는 >< 허용 범위라고 해주는 것임
+			+ 쿼리 중간에 주석 끼워넣어도 오류 발생함! 주석은 밖에 적기!  
+		-->
 	</select>
 	
 	<select id="getCount" parameterType="cafeDto" resultType="int">
@@ -43,6 +52,7 @@
 			#{content}, #{viewCount}, SYSDATE)
 	</insert>
 	
+	<!-- 검색 기능 이전에 쓰던것.(현재 사용 X) -->
 	<select id="getData" parameterType="int" resultType="cafeDto">
 		SELECT result1.*
 		FROM
@@ -55,6 +65,7 @@
 			
 	</select>
 	
+	<!-- 검색 기능 생긴 후 쓰는 것 -->
 	<select id="getData2" parameterType="cafeDto" resultType="cafeDto">
 		SELECT result1.*
 		FROM
@@ -67,6 +78,10 @@
 			) result1
 		WHERE num=#{num}	
 	</select>
+	<!--
+	 	LAG 과 LEAD
+	 	이전글과 다음글 구현에 필요한 함수. 
+	 -->
 	
 	<update id="addViewCount" parameterType="int">
 		UPDATE board_cafe

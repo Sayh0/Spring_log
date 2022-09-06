@@ -11,12 +11,13 @@
 					fileSize,regdate
 				FROM board_file
 				<!-- 검색 키워드 때문에 추가된 부분 --> 
-				<!-- Dynamic Query 동적쿼리. 검색 조건에 따라 달라짐 -->
+				<!-- Dynamic Query 동적쿼리 시작. 검색 조건에 따라 달라짐 -->
 				<!-- 문법은 jsp 랑 비슷함.(c:choose 그거) -->
 				<choose>
 					<when test="title != null and orgFileName != null">
-						WHERE title LIKE '%${title}%' 
-						OR orgFileName LIKE '%'||#{orgFileName}||'%'
+						WHERE title LIKE '%${title}%' <!--${}나 #{}나 기능은 거의 같다. 전처리구문은 가급적 쓰진 말자. --> 
+						OR orgFileName LIKE '%'||#{orgFileName}||'%' <!-- || 는 문자열 합치기. 연결연산자 -->
+						<!-- %시작하는 %끝나는 모두 포함하니까 %% 앞뒤로. -->
 					</when>
 					<when test="title != null">
 						WHERE title LIKE '%'||#{title}||'%'
@@ -26,7 +27,7 @@
 					</when>
 				</choose>
 				<!-- 조건이 다 false 면 암것도 안 들어가고 그냥 페이징 처리. -->
-				<!-- Dynamic Query 동적쿼리. 검색 조건에 따라 달라짐 -->
+				<!-- Dynamic Query 동적쿼리 끝. -->
 				ORDER BY num DESC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND ${endRowNum}
 	</select>

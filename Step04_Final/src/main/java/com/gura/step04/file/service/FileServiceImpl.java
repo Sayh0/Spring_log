@@ -63,7 +63,6 @@ public class FileServiceImpl implements FileService{
 	}
 // CREATE	---------------------------------------------------------------
 	
-// PAGING------------------------------------------------------------------
 	@Override
 	public void getList(HttpServletRequest request) {
 		//한 페이지에 몇개씩 표시할 것인지
@@ -85,9 +84,7 @@ public class FileServiceImpl implements FileService{
 		int startRowNum=1+(pageNum-1)*PAGE_ROW_COUNT;
 		//보여줄 페이지의 끝 ROWNUM
 		int endRowNum=pageNum*PAGE_ROW_COUNT;
-// PAGING------------------------------------------------------------------	
-		
-// SEARCH-------------------------------------------------------------------
+
 		/*
 			[ 검색 키워드에 관련된 처리 ]
 			-검색 키워드가 파라미터로 넘어올수도 있고 안넘어 올수도 있다.		
@@ -122,7 +119,6 @@ public class FileServiceImpl implements FileService{
 				dto.setWriter(keyword);
 			} // 다른 검색 조건을 추가 하고 싶다면 아래에 else if() 를 계속 추가 하면 된다.
 		}
-// SEARCH-------------------------------------------------------------------
 		
 		//파일 목록 얻어오기 
 		//SEARCH 에서 검색 키워드가 있으면 검색 키워드까지 담아서 넘겨준다.

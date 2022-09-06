@@ -67,6 +67,11 @@ public class CafeController {
 	public String ajaxCommentList(HttpServletRequest request) {
 		
 		service.moreCommentList(request);
+		try {
+			Thread.sleep(1000); //댓글 더보기 1초 지연 일부러 
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 		return "cafe/ajax_comment_list";
 	}

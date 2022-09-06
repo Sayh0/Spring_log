@@ -47,7 +47,7 @@ public class FileDaoImpl implements FileDao{
 
 	@Override
 	public int getCount(FileDto dto) {
-		
+		// 검색 키워드에 맞는 전체 row의 개수를 얻어와야 하기 때문에 FileDto 를 parameter Type 으로 전달한다.
 		return session.selectOne("file.getCount", dto);
 	}
 	

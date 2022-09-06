@@ -58,7 +58,7 @@
 				<td>${tmp.fileSize } byte</td>
 				<td>${tmp.regdate }</td>
 				<td>
-					<c:if test="${tmp.writer eq id }">
+					<c:if test="${tmp.writer eq id }"> <!-- id는 sessionScope.id 의 축약. -->
 						<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
 					</c:if>
 				</td>
@@ -93,12 +93,12 @@
 		</ul>
 	</div>
 	
-	<div style="clear:both;"></div>
+	<div style="clear:both;"></div> <!-- 검색창이 위로 붙어버리는것 방지. css에서 ul을 left 해놔서 말려감. 암튼 이건 css 때문에 써놓은거니까 신경 ㄴㄴ -->
 	
 	<form action="list.do" method="get"> 
 		<label for="condition">검색조건</label>
 		<select name="condition" id="condition">
-			<option value="title_filename" ${condition eq 'title_filename' ? 'selected' : '' }>제목+파일명</option>
+			<option value="title_filename" ${condition eq 'title_filename' ? 'selected' : '' }>제목+파일명</option> <!-- condition == requestScope.condition -->
 			<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
 			<option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
 		</select>
