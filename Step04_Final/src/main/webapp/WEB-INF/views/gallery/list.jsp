@@ -14,7 +14,7 @@
    .img-wrapper{
       height: 250px;
       /* transform 을 적용할대 0.3s 동안 순차적으로 적용하기 */
-      transition: transform 0.3s ease-out;
+      transition: transform 0.1s ease-out;
    }
    /* .img-wrapper 에 마우스가 hover 되었을때 적용할 css */
    .img-wrapper:hover{
@@ -39,7 +39,7 @@
 	   		fill - 부모의 크기에 딱 맞게, 비율 관계 없이 맞춘다.(이미지가 일그러질 수 있다.)
 	   		scale-down - 가로, 세로 중에 큰 것을 부모의 크기에 맞춘 상태까지만 커지거나 작아지고, 비율은 일정하다.
 	   	*/
-		object-fit: contain;	
+		object-fit: cover;	
    	}
 </style>
 </head>

@@ -38,6 +38,8 @@
 			ajaxFormPromise(form)
 			.then(function(response){
 				return response.json();
+				//response.json(); 하면 자동으로 오브젝트 타입으로 바뀌어서 들어옴.
+				//그냥 json(); 해버리면 스트링 타입으로 들어와서 오브젝트로 또 번거롭게 바꿔야 함
 			})
 			.then(function(data){
 				//data : {imagePath:"/upload/xxx.jpg"} 형식의 obj
@@ -50,7 +52,7 @@
 				document.querySelector("#imagePath").value = data.imagePath;
 			});
 		});
-		
+			//페이지 전환 없이 제출.
 		document.querySelector("#submitBtn").addEventListener("click", function(){
 			document.querySelector("#insertForm").submit();
 		});
