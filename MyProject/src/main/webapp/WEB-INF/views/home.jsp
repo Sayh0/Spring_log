@@ -14,7 +14,7 @@
 <div class="container">
 	<c:choose>
 		<c:when test="${empty sessionScope.id }">
-		
+			<a href="${pageContext.request.contextPath }/sers/"></a>
 		</c:when>
 	</c:choose>
 </div>
